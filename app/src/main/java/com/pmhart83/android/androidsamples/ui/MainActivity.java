@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -87,8 +89,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             public void run()
             {
+                EmptyFragment f = new EmptyFragment();
+                setContent(f);
+
                 Toast.makeText(getApplicationContext(), "Feature Coming Soon!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void setContent(Fragment f)
+    {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, f);
+        ft.commit();
     }
 }
