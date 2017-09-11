@@ -21,11 +21,11 @@
             <item
                 android:id="@+id/nav_email"
                 android:icon="@drawable/ic_menu_email"
-                android:title="Email paul@xamarinmonkey.com" />
+                android:title="Email" />
             <item
                 android:id="@+id/nav_linkedin"
                 android:icon="@drawable/ic_menu_linkedin"
-                android:title="View Linked-In Profile" />
+                android:title="Linked-In" />
         </menu>
     </item>
 

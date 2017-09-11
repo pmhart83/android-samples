@@ -1,19 +1,16 @@
 package com.pmhart83.android.androidsamples.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.pmhart83.android.androidsamples.R;
+import com.pmhart83.android.androidsamples.controllers.NavigationController;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -50,35 +47,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
+        //todo: use dependancy injection
+
+        NavigationController navController = new NavigationController();
+
         //perform action based on item chosen in hamburger menu
 
         int id = item.getItemId();
 
         if(id == R.id.nav_email)
         {
-
-
+            String toEmail = getString(R.string.email_contact);
+            navController.ShowEmail(this, toEmail);
         }
         else if(id == R.id.nav_linkedin)
         {
-
-
+            String linkedInUserId = getString(R.string.linkedin_userid);
+            navController.ShowLinkedIn(this, linkedInUserId);
         }
-
-        /*
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        } */
 
         //close hamburger menu
 

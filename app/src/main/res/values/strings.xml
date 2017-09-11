@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Android Examples</string>
 
+    <string name="email_contact">paul@xamarinmonkey.com</string>
+    <string name="linkedin_userid">pmhart83</string>
+    <string name="url_linkedin_base">https://www.linkedin.com/in</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
