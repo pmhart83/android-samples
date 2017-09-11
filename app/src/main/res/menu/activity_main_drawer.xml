@@ -3,33 +3,29 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_youtube"
+            android:icon="@drawable/ic_menu_youtube"
+            android:title="YouTube Favorites" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_pdf"
+            android:icon="@drawable/ic_menu_pdf"
+            android:title="View PDF" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_draw"
+            android:icon="@drawable/ic_menu_draw"
+            android:title="Draw Picture" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Contact">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_email"
+                android:icon="@drawable/ic_menu_email"
+                android:title="Email paul@xamarinmonkey.com" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_linkedin"
+                android:icon="@drawable/ic_menu_linkedin"
+                android:title="View Linked-In Profile" />
         </menu>
     </item>
 
