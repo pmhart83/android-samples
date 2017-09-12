@@ -1,17 +1,26 @@
 package com.pmhart83.android.androidsamples.ui.webbrowser;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.pmhart83.android.androidsamples.R;
+import com.pmhart83.android.androidsamples.ui.EmptyFragment;
 
 public class WebBrowserFragment extends Fragment implements View.OnClickListener {
 
@@ -21,6 +30,7 @@ public class WebBrowserFragment extends Fragment implements View.OnClickListener
     private EditText _urlEditText;
     private Button _backButton;
     private Button _fwdButton;
+    private ProgressBar _progressBar;
 
     public WebBrowserFragment() {
     }
@@ -52,17 +62,30 @@ public class WebBrowserFragment extends Fragment implements View.OnClickListener
         _fwdButton.setOnClickListener(this);
         _fwdButton.setEnabled(false);
 
+        _progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
+
         _webView = (WebView) view.findViewById(R.id.webview);
         _webView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                _progressBar.setVisibility(View.VISIBLE);
+            }
+
             @Override
             public void onPageFinished(WebView view, String url) {
                 handleOnPageFinished(view);
+                _progressBar.setVisibility(View.GONE);
             }
         });
-        _webView.loadUrl(_homeUrl);
 
         _urlEditText = view.findViewById(R.id.entry_url);
         _urlEditText.setText(_homeUrl);
+
+        //load starting url
+
+        goUrl(_homeUrl);
     }
 
     private void handleOnPageFinished(WebView view)
@@ -132,13 +155,34 @@ public class WebBrowserFragment extends Fragment implements View.OnClickListener
 
     private void goUrl(String url)
     {
-        if(_webView != null)
+        if(_urlEditText != null)
         {
-            if(!url.startsWith("http://"))
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(_urlEditText.getWindowToken(), 0);
+
+            _urlEditText.clearFocus();
+        }
+
+        if(isOnline())
+        {
+            if(_webView != null)
             {
-                url = String.format("http://%s", url);
+                if(!url.startsWith("http://"))
+                {
+                    url = String.format("http://%s", url);
+                }
+                _webView.loadUrl(url);
             }
-            _webView.loadUrl(url);
+        }
+        else
+        {
+            getActivity().runOnUiThread(new Runnable()
+            {
+                public void run()
+                {
+                    Toast.makeText(getContext(), "Please connect to the internet", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
@@ -148,5 +192,13 @@ public class WebBrowserFragment extends Fragment implements View.OnClickListener
         {
             _webView.reload();
         }
+    }
+
+    private Boolean isOnline()
+    {
+        Activity activity = getActivity();
+        ConnectivityManager connectivityManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
