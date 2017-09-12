@@ -16,13 +16,11 @@
             android:background="#cccccc"
             android:padding="6dp">
 
-            <!--
             <Button
-                android:id="@+id/buttonBack"
+                android:id="@+id/button_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Back" />
-   -->
 
             <Button
                 android:id="@+id/button_home"
@@ -35,7 +33,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:inputType="text" />
 
             <Button
                 android:id="@+id/button_go"
@@ -48,12 +48,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Refresh" />
-<!--
+
             <Button
-                android:id="@+id/buttonForward"
+                android:id="@+id/button_forward"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forward" /> -->
+                android:text="Forward" />
 
         </LinearLayout>
 
