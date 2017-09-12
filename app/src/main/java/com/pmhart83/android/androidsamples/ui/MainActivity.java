@@ -1,7 +1,5 @@
 package com.pmhart83.android.androidsamples.ui;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,12 +9,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.pmhart83.android.androidsamples.R;
 import com.pmhart83.android.androidsamples.controllers.NavigationController;
+import com.pmhart83.android.androidsamples.ui.webbrowser.WebBrowserFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -61,7 +59,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        if(id == R.id.nav_email)
+        if(id == R.id.nav_web)
+        {
+            WebBrowserFragment webFragment = new WebBrowserFragment();
+            setContent(webFragment);
+        }
+        else if(id == R.id.nav_email)
         {
             String toEmail = getString(R.string.email_contact);
             navController.ShowEmail(this, toEmail);
