@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.pmhart83.android.androidsamples.R;
 import com.pmhart83.android.androidsamples.controllers.NavigationController;
-import com.pmhart83.android.androidsamples.ui.webbrowser.WebBrowserFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -35,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        setContent(new HomeFragment());
     }
 
     @Override
@@ -59,7 +60,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        if(id == R.id.nav_web)
+        if(id == R.id.nav_home)
+        {
+            setContent(new HomeFragment());
+        }
+        else if(id == R.id.nav_web)
         {
             WebBrowserFragment webFragment = new WebBrowserFragment();
             setContent(webFragment);

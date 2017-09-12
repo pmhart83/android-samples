@@ -1,4 +1,4 @@
-package com.pmhart83.android.androidsamples.ui.webbrowser;
+package com.pmhart83.android.androidsamples.ui;
 
 
 import android.app.Activity;
