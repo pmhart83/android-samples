@@ -134,6 +134,10 @@ public class WebBrowserFragment extends Fragment implements View.OnClickListener
     {
         if(_webView != null)
         {
+            if(!url.startsWith("http://"))
+            {
+                url = String.format("http://%s", url);
+            }
             _webView.loadUrl(url);
         }
     }
