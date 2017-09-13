@@ -60,9 +60,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        if(id == R.id.nav_home)
-        {
+        if (id == R.id.nav_home) {
             setContent(new HomeFragment());
+        }
+        else if(id == R.id.nav_draw)
+        {
+            DrawPictureFragment drawFragment = new DrawPictureFragment();
+            setContent(drawFragment);
         }
         else if(id == R.id.nav_web)
         {

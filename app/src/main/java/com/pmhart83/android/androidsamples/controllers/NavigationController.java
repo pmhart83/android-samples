@@ -7,11 +7,18 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.pmhart83.android.androidsamples.R;
+import com.pmhart83.android.androidsamples.ui.DrawingActivity;
 
 public class NavigationController {
 
     public void NavigationController()
     {
+    }
+
+    public void ShowDrawingActivity(Context context)
+    {
+        Intent activityIntent = new Intent(context, DrawingActivity.class);
+        context.startActivity(activityIntent);
     }
 
     public void ShowEmail(Context context, String toEmail)
