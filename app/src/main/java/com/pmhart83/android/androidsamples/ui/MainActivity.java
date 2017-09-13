@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if(id == R.id.nav_draw)
         {
-            DrawPictureFragment drawFragment = new DrawPictureFragment();
+            DrawingListFragment drawFragment = new DrawingListFragment();
             setContent(drawFragment);
         }
         else if(id == R.id.nav_web)

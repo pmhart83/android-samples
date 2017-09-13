@@ -19,12 +19,12 @@ import com.pmhart83.android.androidsamples.models.DrawingModel;
 import java.util.ArrayList;
 
 
-public class DrawPictureFragment extends Fragment {
+public class DrawingListFragment extends Fragment {
 
     private DrawingController _drawingController;
     private NavigationController _navigationController;
 
-    public DrawPictureFragment() {
+    public DrawingListFragment() {
         _drawingController = new DrawingController();
         _navigationController = new NavigationController();
     }
